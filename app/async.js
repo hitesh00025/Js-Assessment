@@ -18,9 +18,9 @@ exports.asyncAnswers = {
         var array = [], i = 0;
 
         for (var key in obj) {
-            var name = obj[key];
-            for (var name in test) {
-                array[i] = test[name].name;
+            var people = obj[key];
+            for (var name in people) {
+                array[i] = people[name].name;
                 i++;
             }
 
