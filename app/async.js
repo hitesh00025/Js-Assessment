@@ -1,5 +1,6 @@
 exports = (typeof window === 'undefined') ? global : window;
 var Q = require("q");
+var fs = require('fs');
 exports.asyncAnswers = {
     async: function (value) {
 
@@ -11,6 +12,23 @@ exports.asyncAnswers = {
     },
 
     manipulateRemoteData: function (url) {
+        var deferred = Q.defer();
+
+        var obj = JSON.parse((fs.readFileSync('.' + url, 'utf8')));
+        var array = [], i = 0;
+
+        for (var key in obj) {
+            var name = obj[key];
+            for (var name in test) {
+                array[i] = test[name].name;
+                i++;
+            }
+
+
+        }
+
+        deferred.resolve(array.sort());
+        return deferred.promise;
 
     }
 };
